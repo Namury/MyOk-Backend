@@ -26,8 +26,13 @@ $router->group(['middleware' => 'auth','prefix' => 'api'], function ($router)
 
 $router->group(['prefix' => 'api'], function () use ($router) 
 {
-   $router->get('item/all', 'HomeController@showAllItem');
+   $router->get('item/all', 'ItemController@showAllItem');
+   $router->get('item/{id}', 'ItemController@showSingleItem');
    
+   $router->post('item/create', 'ItemController@createItem');
+
+   $router->patch('item/edit/{id}', 'ItemController@editItem');
+
    $router->post('register', 'AuthController@register');
    $router->post('login', 'AuthController@login');
 });
